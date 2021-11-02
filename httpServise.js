@@ -23,8 +23,8 @@ class HttpServise {
         // },
         USERS: {
             getUser: "users/",
-        }
-    }
+        },
+    };
 
     constructor(className) {
         this._mainContainer = HttpServise.getByClassName(className);

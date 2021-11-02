@@ -1,1 +1,1 @@
-const httpServise = new HttpServise('container')
+const httpServise = new HttpServise('container');
