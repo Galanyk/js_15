@@ -5,17 +5,16 @@ class HttpServise {
         PUBLIK_REPOST: 'public_repos',
         FOLLOWER: 'followers',
         FOLLOWING: 'following',
-        INPUT_EL: 'input'
     };
 
     _buttonEl = document.querySelector('#button');
     _inputEl = document.querySelector('#input');
-    _logoEl = HttpServise.CLASSES.INPUT_EL.value;
 
     _avatar = null;
     _publicRepos = null;
     _followers = null;
     _following = null;
+    _mainContainer = null;
 
     static ENVIRONMENT = {
         // POSTS: {
@@ -27,16 +26,13 @@ class HttpServise {
         }
     }
 
-    _mainContainer = null;
-    _logoEl = '';
-
     constructor(className) {
         this._mainContainer = HttpServise.getByClassName(className);
         this.init();
     };
 
     init() {
-        this.setListener(this._buttonEl, 'click', this.onButtonClick)
+        this.setListener(this._buttonEl, 'click', this.onButtonClick);
     };
 
     static getByClassName(className) {
@@ -44,12 +40,12 @@ class HttpServise {
     };
 
     getData(data, key) {
-        return data.data[key]
-    }
+        return data.data[key];
+    };
 
     setListener(element, event, callBack) {
         element.addEventListener(event, callBack);
-    }
+    };
 
     onButtonClick = () => {
         axios.get(`${HttpServise.API}${HttpServise.ENVIRONMENT.USERS.getUser}${this._inputEl.value}`).then(response => {
@@ -70,19 +66,19 @@ class HttpServise {
             .finally(
                 console.log('FINAL')
             )
-    }
+    };
 
     createElementAvatar(data, containerEl, tag, classList) {
         const avatarEl = document.createElement(tag);
         avatarEl.setAttribute('src', data);
-        avatarEl.classList.add(classList)
+        avatarEl.classList.add(classList);
         containerEl.append(avatarEl);
     };
 
     createElement(data, containerEl, tag, classList) {
         const element = document.createElement(tag);
         element.textContent = data;
-        element.classList.add(classList)
+        element.classList.add(classList);
         containerEl.append(element);
     };
 }
