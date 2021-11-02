@@ -53,6 +53,7 @@ class HttpServise {
                 this._publicRepos = this.getData(response, HttpServise.CLASSES.PUBLIK_REPOST);
                 this._followers = this.getData(response, HttpServise.CLASSES.FOLLOWER);
                 this._following = this.getData(response, HttpServise.CLASSES.FOLLOWING);
+                this.clearValue(this._inputEl);
             })
             .then(() =>
                 this.createElementAvatar(this._avatar, this._mainContainer, 'img', HttpServise.CLASSES.AVATAR_URL))
@@ -80,5 +81,9 @@ class HttpServise {
         element.textContent = data;
         element.classList.add(classList);
         containerEl.append(element);
+    };
+
+    clearValue(element) {
+        element.value = '';
     };
 }
